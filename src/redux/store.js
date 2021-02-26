@@ -6,7 +6,13 @@ const initialState = {
 }
 
 function rootReducer(state = initialState, action) {
+    console.log(action);
     switch (action.type) {
+        case 'UPDATE_TEXT':
+        return {
+            ...state,
+            text2: 'UPDATED TEXT'
+        }
       default:
         return state
     }

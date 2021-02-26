@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { connect } from "react-redux";
 import './App.css';
 
-function App({text2}) {
+function App({text2, setText2}) {
   const [text, setText] = useState('initial state text');
 
   const handleTextChange = () => {
     setText('new state text')
+    setText2('new state text 2')
   }
 
-  console.log('APP', text2)
+  console.log('APP', setText2)
 
   return (
     <div className="App">
@@ -28,6 +29,13 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    setText2: () => dispatch({ type: "UPDATE_TEXT" }),
+  }
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(App);
